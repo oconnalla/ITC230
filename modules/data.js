@@ -1,6 +1,6 @@
 const badDnDChar = [
   {name:'Greasy-Beard-Jones', strength:'crying', weakness: 'beards'},
-  {name:'whistleBlowin-Steve', strength:'tattling', weakness:'air'},
+  {name:'WhistleBlowin-Steve', strength:'tattling', weakness:'air'},
   {name:'Stalking-Sally', strength:'tracking', weakness: 'name-calling'},
   {name:'Weeping-Wally', strength:'growing hair', weakness: 'feelings'},
   {name:'Narcissistic-Nancy ', strength:'being right', weakness: 'mirrors'}
@@ -47,10 +47,20 @@ const get = (name) =>{
 // };
 
 const deleted = (name) =>{
-    const deletechar = badDnDChar.forEach((findChar) => {
-        return findChar.name == name;
+  console.log('first name: ' + name);
+    //const deletechar = badDnDChar.forEach((findChar) => {
+      //console.log('second name instance: ' + name);
+      //console.log('findchar: ' + findChar.name);
+        //return findChar.name == name;
+        //});
+        //console.log('deletechar: ' + deletechar);
+        const deletechar = badDnDChar.find((charName) => {
+          return charName.name.toLowerCase() === name.toLowerCase();
         });
-        badDnDChar.splice(deletechar,1);
+        //console.log(typeof deletechar.name);
+        //console.log('deletechar.name:  ' + deletechar.name);
+        badDnDChar.splice(badDnDChar.indexOf(deletechar.name)-1,1);
+        return badDnDChar;
   };
 
 module.exports = { getAll, get, deleted };
@@ -60,5 +70,6 @@ module.exports = { getAll, get, deleted };
 
 
 //used to test that method 3 works
-//console.log(deleted('Weeping Wally'));
 //console.log(getAll());
+// console.log(deleted('Weeping-Wally'));
+// console.log(getAll());

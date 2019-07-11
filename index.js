@@ -52,7 +52,7 @@ http.createServer((req,res) => {
     }else{
       // var query splits the url array item[1] of "name = the searched for name" at the "=" mark into into an array and gets back the second position which is the the searched for name
       let query = url[1].split('=');
-      console.log('query' + query[1]);
+      // console.log('query: ' + query[1]);
       //let revealSpecificChar = data.get();
       // let query = url.split('='); 
       res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -62,7 +62,9 @@ http.createServer((req,res) => {
   case '/deleted':
     let query = url[1].split('=');
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('List of deleted character(s): ' + JSON.stringify(data.deleted(query[1])));
+    console.log('query: ' + query[1]);
+    //data.deleted(query[1]);
+    res.end('List of remaining character(s): ' +  JSON.stringify(data.deleted(query[1])));
     break;
 
   default:
