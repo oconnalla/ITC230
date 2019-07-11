@@ -48,18 +48,15 @@ const get = (name) =>{
 
 const deleted = (name) =>{
   console.log('first name: ' + name);
-    //const deletechar = badDnDChar.forEach((findChar) => {
-      //console.log('second name instance: ' + name);
-      //console.log('findchar: ' + findChar.name);
-        //return findChar.name == name;
-        //});
-        //console.log('deletechar: ' + deletechar);
+    // const deletechar = badDnDChar.forEach((findChar) => {
+    //     return findChar.name.toLowerCase() == name.toLowerCase();
+    //     });
         const deletechar = badDnDChar.find((charName) => {
           return charName.name.toLowerCase() === name.toLowerCase();
         });
-        //console.log(typeof deletechar.name);
-        //console.log('deletechar.name:  ' + deletechar.name);
-        badDnDChar.splice(badDnDChar.indexOf(deletechar.name)-1,1);
+        //console.log(typeof deletechar);
+        //console.log(badDnDChar.indexOf(deletechar));
+        badDnDChar.splice(badDnDChar.indexOf(deletechar),1);
         return badDnDChar;
   };
 
