@@ -16,7 +16,8 @@ http.createServer((req,res) => {
   //the [0] is the first portion of the array AKA the path 
   let path = url[0];
   //the [1] is the second portion of the array
-  let queryParams = querystring.parse(url[1]);
+  //let queryParams = querystring.parse(url[1]);
+  //console.log( 'queryParams' + queryParams);
 
 
   switch(path) {
@@ -40,27 +41,28 @@ http.createServer((req,res) => {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('List of all characters: ' + JSON.stringify(revealChar));
     break;
-
   case '/detail':
     //let query = url.split('=');
-    if(queryParams.contains(data.name)){
+    //console.log('this is data.name ' + data.name);
+    //console.log('this is queryParams ' + queryParams);
+    // if(queryParams.contains(data.name)){
+    if(1 === 0){
       res.writeHead(200,{'Content-Type': 'text/html'});
-      res.end(alert('item not found'));
+      res.end('item not found');
     }else{
       // var query splits the url array item[1] of "name = the searched for name" at the "=" mark into into an array and gets back the second position which is the the searched for name
-
       let query = url[1].split('=');
-      let revealSpecificChar = data.get();
+      console.log('query' + query[1]);
+      //let revealSpecificChar = data.get();
       // let query = url.split('='); 
       res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('specific character: ' + JSON.stringify(revealSpecificChar(query[1])));
+      res.end('specific character: ' + JSON.stringify(data.get(query[1])));
     }
     break;
   case '/deleted':
     let query = url[1].split('=');
-    let removeSpecificChar = data.deleted();
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('List of all characters: ' + JSON.stringify(removeSpecificChar(query[1])));
+    res.end('List of deleted character(s): ' + JSON.stringify(data.deleted(query[1])));
     break;
 
   default:
