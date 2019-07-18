@@ -1,0 +1,15 @@
+    
+<html>
+        <link rel="stylesheet" href="/css/style.css">
+        <body>
+            <button>
+                <a href="/">Home</a>
+            </button>
+            {{#if result }}
+                <h2>{{name}} deleted</h2>
+                <h3>{{total}} remaining</h3>
+            {{else}}
+                <h2>{{name}} not found</h2>
+            {{/if}}  
+        </body>
+    </html>

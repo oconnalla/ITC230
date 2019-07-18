@@ -1,2 +1,4 @@
 # ignore npm packages
 node_modules
+#ignore js file
+credential.js

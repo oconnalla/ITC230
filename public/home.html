@@ -4,11 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
+    <style>
+    body{
+        background-color:black;
+        color:white;
+        font-family: sans-serif;
+        font-weight:lighter;
+    }
+    button{
+        margin-top:5%;
+        margin-left:2.5%;
+        padding:1%;
+        color:red;
+        border:1px solid grey;
+        font-size:1em;
+    }
+    h1:first-of-type{
+        color:grey;
+    }
+    h3{
+        margin-top:5%;
+    }
+    input{
+        margin-right:2.5%;
+    }
+
+    </style>
 </head>
 <body>
-    <h1>
-        WHUDDUP!
-    </h1>
+    <h1>WHUDDUP!</h1>
+    <h1>Home Page</h1>
+    <p> welcome to ITC 230 {{name}}</p>
+    <h3>Create or remove a Bad DnD Character!</h3>
+    <form action ="/detail" method="post">
+        Enter a name: <input type = text name = "dndName">
+        Enter a strength: <input type = text name = "stregnth" >
+        Enter a weakness: <input type = text name = "weakness" ><br>
+        <button>Find 'Em!</button>
+        <button>Add 'Em!</button>
+        <button>Delete 'Em!</button>
+    </form>
 </body>
 </html>

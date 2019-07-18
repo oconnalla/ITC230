@@ -1,0 +1,24 @@
+<!-- <h1>Detail Page</h1> -->
+<!-- <p> Bad Dnd Characters</p>
+<p>You Searched For: {{name}}</p> -->
+
+<html>
+    <link rel="stylesheet" href="/css/style.css">
+    <body>
+        <h1>Detail Page</h1>
+        <button>
+            <a href="/">Home</a>
+        </button>
+{{#if result}}
+    <h2>{{name}} details</h2>
+    <li>Name: {{result.name}}</li>
+    <li>Strength: {{result.strength}}</li>
+    <li>Weakness: {{result.weakness}}</li>
+    <button>
+    <a href="/delete?name={{result.name}}">Delete</a>
+    </button>
+{{else}}
+        <h2>{{name}} not found</h2>
+{{/if}}
+    </body>
+</html>

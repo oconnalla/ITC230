@@ -1,7 +1,22 @@
-<h1>Home Page</h1>
+<!-- <h1>Home Page</h1>
 <p> welcome to ITC 230 {{name}}</p>
 <form action ="/detail" method="post">
-Enter a name: <input type = text name = "username">
+Search for a Bad DnD Character: <input type = text name = "dndChar">
 <button>submit</button>
 
-</form>
+</form> -->
+
+<html>
+    <link rel="stylesheet" href="/css/style.css">
+    <body>
+        <h2>Home</h2>
+        <form method="POST" action="/detail">
+            <input type="text" name="name" placeholder="character name" required maxlength="50">
+            <button>Search Em!</button>
+        </form>
+        <h3>Bad DnD Character</h3>
+        {{#each badDnDChar}}
+            <li><a href="/detail?name={{name}}">{{name}}</a></li>
+        {{/each}}
+    </body>
+</html>
