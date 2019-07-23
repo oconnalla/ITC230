@@ -13,5 +13,7 @@ module.exports = {
         "ecmaVersion": 2018
     },
     "rules": {
+        "prefer-arrow-callback": "warn",
+        "no-var": "warn",
     }
 };

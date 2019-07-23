@@ -39,4 +39,17 @@ const deleted = (name) =>{
         return badDnDChar;
   };
 
-module.exports = { getAll, get, deleted };
+//METHOD FOUR
+  let added = (name,strength,weakness) =>{
+    //name = JSON.stringify(name);
+    //strength = JSON.stringify(strength);
+    //weakness=JSON.stringify(weakness); 
+      // add item to ArrayBuffer
+      if(name!=badDnDChar.name){
+      badDnDChar.push({name, strength, weakness})
+        
+      }
+      return badDnDChar;
+    };
+
+module.exports = { getAll, get, deleted, added };
