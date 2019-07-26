@@ -1,0 +1,14 @@
+<html>
+        <link rel="stylesheet" href="/css/style.css">
+        <body>
+            <button>
+                <a href="/">Home</a>
+            </button>
+            {{#if result }}
+                <h2>{{name}} was added</h2>
+                <h3>{{total}} characters in the collection</h3>
+            {{else}}
+                <h2>{{name}} not found</h2>
+            {{/if}}  
+        </body>
+    </html>

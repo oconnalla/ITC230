@@ -15,7 +15,10 @@
     <li>Strength: {{result.strength}}</li>
     <li>Weakness: {{result.weakness}}</li>
     <button>
-    <a href="/delete?name={{result.name}}">Delete</a>
+        <a href="/delete?name={{result.name}}">Delete</a>
+    </button>
+    <button>
+        <a href="/add?name={{result.name}}">Add</a>
     </button>
 {{else}}
         <h2>{{name}} not found</h2>
