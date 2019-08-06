@@ -100,7 +100,8 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 // parse form submissions
 app.use(bodyParser.urlencoded({extended: true}));
-
+// set Access-Control-Allow-Origin header for api route
+app.use('/api', require('cors')());
 //lets this file access handlebars
 const handlebars =  require('express-handlebars');
 //tells express what template to use and the file extension
@@ -164,6 +165,68 @@ app.post('/detail', (req,res) => {
   res.render('detail', {name: req.body.name, result: findChar, badDnDChar: data.getAll()});
 });
 
+
+
+
+////////////////////////////////////////////////////////////////////////API SECTION//
+//////////////////////////////////////////////////////////////////////
+// app.get('/api:char'),(req, res, next) =>{
+//   data.find((err, item) => {
+//     if(err || !item) return next(err);
+//     res.JSON(item);
+//   });
+// };
+
+
+app.get('/api/char', (req,res) => {
+  // return all items in badDndChar array
+  var char = data.getAll();
+  if (char) {
+    // turn it into JSON 
+    res.json(char);
+    //else return an error
+  } else {
+    return res.status(500).send('Error occurred: database error.');
+  }
+});
+
+
+app.get('/api/:name', (req,res) => {
+  let char = data.get(req.params.name)
+  if (char) {
+    // turn it into JSON 
+    res.json(char);
+    //else return an error
+  } else {
+    return res.status(500).send('Error occurred: database error.');
+  }
+});
+
+app.get('/api/delete/:name', (req,res) => {
+  let char = data.deleted(req.params.name);
+  console.log(char);
+  let total = data.getAll().length;
+  if (char) {
+    // turn it into JSON 
+    res.json('Your request to remove ' + req.params.name + ' was successful. Remaining characters: ' + total);
+    //else return an error
+  } else {
+    return res.status(500).send('Error occurred: database error. Cannont delete character');
+  }
+});
+
+app.put('/api/add/:name:strenth:weakness', (req,res) => {
+  let char = data.added(req.params);
+  console.log(char);
+  let total = data.getAll().length;
+  if (char) {
+    // turn it into JSON 
+    res.json('Your request to add ' + req.params.name + ' was successful. Remaining characters: ' + total);
+    //else return an error
+  } else {
+    return res.status(500).send('Error occurred: database error. Cannont delete character');
+  }
+});
 
 // define 404 handler in case route doesn't work
 app.use( (req,res) => {

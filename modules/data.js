@@ -46,8 +46,7 @@ const deleted = (name) =>{
     //weakness=JSON.stringify(weakness); 
       // add item to ArrayBuffer
       if(name!=badDnDChar.name){
-      badDnDChar.push({name, strength, weakness})
-        
+      badDnDChar.push({name, strength, weakness})  
       }
       return badDnDChar;
     };
