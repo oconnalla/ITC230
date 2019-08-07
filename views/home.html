@@ -10,56 +10,86 @@
     </head>
 
     <body>
-                    <!-- <div id='root'></div>
+        <h2>Home</h2>
+        <form method="POST" action="/detail">
+            <input type="text" name="name" placeholder="character name" required maxlength="50">
+            <button>Search Em!</button>
+        </form>
+        <h3>Bad DnD Character</h3>
+        {{#each badDnDChar}}
+        <li><a href="/detail?name={{name}}">{{name}}</a></li>
+        {{/each}} 
         
-                    <script type='text/babel'>
-                        
-                    // Define app container Component                      
-                        class App extends React.Component {
-                            constructor(props) {
-                                // Pass Props to parent class. 
-                                super(props); 
-                                // set initial state  
-                                this.state = {
-                                data: {{{char}}},
-                                filter: "", // search term 
-                                curItem: {} // current selected item 
-                                };
 
-                  
-                    const List = (props) => {
-                    let items_list= props.items.map((item)=> {
-                        return <li key={item._id}>{item.name}</li>
-                    });
-                    return( 
-                        <div> Character List
-                            <ul>
-                                {items_list}
-                            </ul>
-                        </div>
-                    )
-                } 
-                render() {
-                        return(
-                            <div>
-                                <List items={this.state.items}
-                                /> List
-                            </div>
-                        );
-                    }
+
+
+        <div id='root'></div>
+            <script type='text/babel'>
+        
+            const Welcome = (props) => {
+                console.log(props);
+                return <h1> Hello, {props.myname}</h1>
+            } //CLOSES WELCOME PROP
             
-                ReactDOM.render(<App />, document.getElementById('root'));  
-            </script>  -->
+            const List = (props) => {
+                let items_list= props.items.map((item) => {
+                return<li key={item._id}>{item.name}
+                    </li>
+                });
+                return(
+                <div>
+                    Character List
+                    <ul>
+                        {items_list}
+                    </ul>
+                </div>
+            );
+            }
 
+            // Define app container Component 
+            class App extends React.Component {
+                 constructor(props) {
+                     super(props);  
+                     this.state = {
+                     items: {{{badDnDChar}}},
+                     curItem: {}
+                     };//END OF STATE
+                }//CLOSES CONSTRUCTOR PROPS
 
-            <h2>Home</h2>
-            <!-- <form method="POST" action="/detail">
-                <input type="text" name="name" placeholder="character name" required maxlength="50">
-                <button>Search Em!</button>
-            </form> -->
-             <h3>Bad DnD Character</h3>
-           {{#each badDnDChar}}
-            <li><a href="/detail?name={{name}}">{{name}}</a></li>
-            {{/each}} 
+                render(){
+                return(
+                    <div>
+                        <Welcome myname='Ariel' />
+                        <List items = {this.state.items}/>
+                    </div>
+                );
+                } //CLOSES RENDER 
+
+            } //CLOSES REACT COMPONENT
+            
+            ReactDOM.render(<App/>, document.getElementById('root'));  
+        </script> 
     </body>
 </html>
+
+
+<script>
+                //     });
+                //     return( 
+                //         <div> Character List
+                //             <ul>
+                //                 {items_list}
+                //             </ul>
+                //         </div>
+                //     )
+                // } 
+                // render() {
+                //         return(
+                //             <div>
+                //                 <List items={this.state.items}
+                //                 /> List
+                //             </div>
+                //         );
+
+
+</script>

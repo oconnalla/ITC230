@@ -37,9 +37,9 @@ app.set('view engine', '.html');
 //old method: // res.render('home',{badDnDChar: data.getAll()});
 
 app.get('/', (req, res) => {
-  Data.find((err,char) => {
+  Data.find((err,name) => {
       if (err) return next(err); 
-      res.render('home', {badDnDChar:char});
+      res.render('home', {badDnDChar:JSON.stringify(name)});
     });
 });
 
