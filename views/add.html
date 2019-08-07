@@ -4,11 +4,21 @@
             <button>
                 <a href="/">Home</a>
             </button>
-            {{#if result }}
+
+            <form method="POST" action='/api/char/add'>
+                <legend>Name</legend>
+                <input type="text" name="name" placeholder="character name" required maxlength="50">
+                <legend>Strength</legend>
+                <input type="text" name="strength" placeholder="character strength" required maxlength="50">
+                <legend>Weakness</legend>
+                <input type="text" name="weakness" placeholder="character weakness" required maxlength="50">
+                <button>Submit</button>
+            </form>
+            <!-- {{#if result }}
                 <h2>{{name}} was added</h2>
                 <h3>{{total}} characters in the collection</h3>
             {{else}}
                 <h2>{{name}} not found</h2>
-            {{/if}}  
+            {{/if}}   -->
         </body>
     </html>

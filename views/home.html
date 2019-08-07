@@ -1,22 +1,65 @@
-<!-- <h1>Home Page</h1>
-<p> welcome to ITC 230 {{name}}</p>
-<form action ="/detail" method="post">
-Search for a Bad DnD Character: <input type = text name = "dndChar">
-<button>submit</button>
-
-</form> -->
-
 <html>
-    <link rel="stylesheet" href="/css/style.css">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>React Project</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
     <body>
-        <h2>Home</h2>
-        <form method="POST" action="/detail">
-            <input type="text" name="name" placeholder="character name" required maxlength="50">
-            <button>Search Em!</button>
-        </form>
-        <h3>Bad DnD Character</h3>
-        {{#each badDnDChar}}
+                    <!-- <div id='root'></div>
+        
+                    <script type='text/babel'>
+                        
+                    // Define app container Component                      
+                        class App extends React.Component {
+                            constructor(props) {
+                                // Pass Props to parent class. 
+                                super(props); 
+                                // set initial state  
+                                this.state = {
+                                data: {{{char}}},
+                                filter: "", // search term 
+                                curItem: {} // current selected item 
+                                };
+
+                  
+                    const List = (props) => {
+                    let items_list= props.items.map((item)=> {
+                        return <li key={item._id}>{item.name}</li>
+                    });
+                    return( 
+                        <div> Character List
+                            <ul>
+                                {items_list}
+                            </ul>
+                        </div>
+                    )
+                } 
+                render() {
+                        return(
+                            <div>
+                                <List items={this.state.items}
+                                /> List
+                            </div>
+                        );
+                    }
+            
+                ReactDOM.render(<App />, document.getElementById('root'));  
+            </script>  -->
+
+
+            <h2>Home</h2>
+            <!-- <form method="POST" action="/detail">
+                <input type="text" name="name" placeholder="character name" required maxlength="50">
+                <button>Search Em!</button>
+            </form> -->
+             <h3>Bad DnD Character</h3>
+           {{#each badDnDChar}}
             <li><a href="/detail?name={{name}}">{{name}}</a></li>
-        {{/each}}
+            {{/each}} 
     </body>
 </html>

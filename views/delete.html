@@ -1,15 +1,24 @@
-    
-<html>
+
+    <html>
         <link rel="stylesheet" href="/css/style.css">
         <body>
             <button>
                 <a href="/">Home</a>
             </button>
-            {{#if result }}
-                <h2>{{name}} deleted</h2>
-                <h3>{{total}} remaining</h3>
-            {{else}}
-                <h2>{{name}} not found</h2>
-            {{/if}}  
+
+            <form method="GET" action='/api/char/deleted'>
+                <legend>Name</legend>
+                <input type="text" name="name" placeholder="character name" required maxlength="50">
+                <button>Submit</button>
+            </form>
+            <!-- <button> 
+                    <a href="/">Home</a>
+                </button>
+                {{#if result }}
+                    <h2>{{name}} deleted</h2>
+                    <h3>{{total}} remaining</h3>
+                {{else}}
+                    <h2>{{name}} not found</h2>
+                {{/if}}  -->
         </body>
     </html>
