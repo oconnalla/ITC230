@@ -15,27 +15,23 @@
             <input type="text" name="name" placeholder="character name" required maxlength="50">
             <button>Search Em!</button>
         </form>
-        <h3>Bad DnD Character</h3>
-        {{#each badDnDChar}}
-        <li><a href="/detail?name={{name}}">{{name}}</a></li>
-        {{/each}} 
-        
+        <h3>Bad DnD Characters</h3>
 
 
 
         <div id='root'></div>
             <script type='text/babel'>
         
-            const Welcome = (props) => {
-                console.log(props);
-                return <h1> Hello, {props.myname}</h1>
-            } //CLOSES WELCOME PROP
+            // const Welcome = (props) => {
+            //     console.log(props);
+            //     return <h1> Hello, {props.myname}</h1>
+            // } //CLOSES WELCOME PROP
             
             const List = (props) => {
                 let items_list= props.items.map((item) => {
-                return<li key={item._id}>{item.name}
+                return<li onClick={props.onclick} key={item._id} id={item._id}>{item.name}
                     </li>
-                });
+                }); //CLOSES items_list
                 return(
                 <div>
                     Character List
@@ -44,6 +40,16 @@
                     </ul>
                 </div>
             );
+            }//CLOSES List
+
+            const Detail = (props) => {
+                return(
+                    <div>
+                        Name: {props.item.name}<br />
+                        Strength: {props.item.strength}<br />
+                        Weakness: {props.item.weakness}<br />
+                    </div>
+                )
             }
 
             // Define app container Component 
@@ -54,42 +60,30 @@
                      items: {{{badDnDChar}}},
                      curItem: {}
                      };//END OF STATE
+                     this.showDetail = this.showDetail.bind(this);
                 }//CLOSES CONSTRUCTOR PROPS
+
+                //show char details when clicked
+                showDetail(event) {
+                  //event.target is char being clicked ---this assumes each char has an id attribute  
+                  let showItem = this.state.items.find((item) =>{
+                      return item._id == event.target.id;
+                  });
+                  this.setState({curItem:showItem});
+                }
 
                 render(){
                 return(
-                    <div>
-                        <Welcome myname='Ariel' />
-                        <List items = {this.state.items}/>
+                    //<Welcome myname='Ariel' />      (goes inside div if you want to use it)
+                    <div>  
+                        <List items = {this.state.items} onclick ={this.showDetail}/>
+                        <Detail item={this.state.curItem}/>
                     </div>
                 );
                 } //CLOSES RENDER 
-
             } //CLOSES REACT COMPONENT
             
             ReactDOM.render(<App/>, document.getElementById('root'));  
         </script> 
     </body>
 </html>
-
-
-<script>
-                //     });
-                //     return( 
-                //         <div> Character List
-                //             <ul>
-                //                 {items_list}
-                //             </ul>
-                //         </div>
-                //     )
-                // } 
-                // render() {
-                //         return(
-                //             <div>
-                //                 <List items={this.state.items}
-                //                 /> List
-                //             </div>
-                //         );
-
-
-</script>
