@@ -19,6 +19,8 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 // parse form submissions
 app.use(bodyParser.urlencoded({extended: true}));
+//server application will need this command to recognize JSON requests
+app.use(bodyParser.json());
 // set Access-Control-Allow-Origin header for api route
 app.use('/api', require('cors')());
 app.use((err, req, res, next) => {
@@ -102,8 +104,8 @@ app.get('/api/char', (req,res, next) => {
 });
 
 //DELETE METHOD
-app.get('/api/char/deleted', (req,res,next) => {
-  Data.deleteOne({'name':req.query.name }, (err, result) => {
+app.get('/api/char/deleted:id', (req,res,next) => {
+  Data.remove({'_id':req.params.id}, (err, result) => {
       if (err) return next(err);
         res.json({'deleted':result.deletedCount});
   });
@@ -121,7 +123,10 @@ app.get('/api/char/:name', (req, res, next) => {
 //Asked George
 //ADD METHOD
 app.post('/api/char/add/', (req,res, next) => {
-  Data.update({'name':req.body.name}, req.body, {upsert:true}, (err, result) =>{
+  console.log(req.body);
+  Data.updateOne({'_id':req.body._id}, req.body, {upsert:true}, (err, result) =>{
+    console.log(err);
+    console.log(result);
   if (err) return next(err);
   // res.json({ name:req.body.name + ' was added to database.'});
   res.json( {'add':result.upserted});
